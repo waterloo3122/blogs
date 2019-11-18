@@ -165,7 +165,7 @@ below
 # install firefox
 `pkg install firefox`
 
-# install network-manager
+# install network-manager (not work)
 `pkg install networkmgr`
 
 `vim /usr/local/etc/doas.conf`
