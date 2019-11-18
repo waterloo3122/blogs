@@ -175,10 +175,13 @@ server {
 assume user is admin and password is admin
 
 `openssl passwd -1 admin`
+
 copy the following output into /etc/nginx/httppasswd
+
 `$1$vkuyE8du$a4n6MD17nSEu6dLtspPX31`
 
 `cat /etc/nginx/httppasswd`
+
 ```
 admin:$1$vkuyE8du$a4n6MD17nSEu6dLtspPX31
 ```
