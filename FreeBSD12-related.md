@@ -32,7 +32,7 @@ PermitEmptyPasswords no
 ## 5
 netstat -an
 
-# install vim tmux
+# install tmux
 pkg install tmux
 
 vim ~/.tmux.conf
@@ -61,3 +61,95 @@ bind -n M-h resize-pane -L 5
 bind -n M-l resize-pane -R 5
 
 ```
+
+# 更换国内源
+## 更换pkg源
+
+```
+mkdir -p /usr/local/etc/pkg/repos
+cat /usr/local/etc/pkg/repos/FreeBSD.conf
+```
+
+```
+FreeBSD:{
+    url: "pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
+}
+```
+or
+```
+FreeBSD: {
+    url: "pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/latest",
+    mirror_type: "srv",  signature_type: "fingerprints",
+    fingerprints: "/usr/share/keys/pkg",
+    enabled: yes
+}
+```
+
+`pkg update`
+`pkg update -f`
+
+
+
+
+## 更换portsnap源
+vi /etc/portsnap.conf
+change
+SERVERNAME=portsnap.FreeBSD.org
+to 
+SERVERNAME=portsnap.cn.FreeBSD.org
+
+portsnap fetch
+portsnap extract
+portsnap update
+
+## 修改ports源
+vim /etc/make.conf
+
+```
+# content of make.conf
+FETCH_CMD=axel -n 10 -a
+DISABLE_SIZE=yes
+MASTER_SITE_OVERRIDE?=http://mirrors.ustc.edu.cn/freebsd-ports/distfiles/${DIST_SUBDIR}/
+```
+
+# install vim
+
+```
+pkg clean
+rm -rf /var/cache/pkg/*
+pkg update -f
+pkg install vim
+
+```
+
+
+# install gnome3 on intel vga
+
+`pkg install xf86-video-intel​​​​​​​`
+
+`vim /etc/rc.conf`
+
+add 
+
+`linux_enable="YES"`
+
+`kldload linux64`
+
+`kldstat`
+
+`pkg install xorg`
+`startx`
+`xrandr`
+
+`pkg install gnome3`
+`vim /etc/rc.conf`
+
+add
+
+```
+gdm_enable="YES"
+gnome_enable="YES"
+dbus_enable="YES"
+hald_enable="YES"
+```
+`reboot`
