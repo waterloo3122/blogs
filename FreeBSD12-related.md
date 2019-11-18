@@ -161,3 +161,21 @@ add
 `pp ALL=(ALL) ALL`
 below
 `root ALL=(ALL) ALL`
+
+# install firefox
+`pkg install firefox`
+
+# install network-manager
+`pkg install networkmgr`
+
+`vim /usr/local/etc/doas.conf`
+add below
+
+```
+permit nopass keepenv root
+    permit :wheel 
+    permit nopass keepenv :wheel cmd netcardmgr
+    permit nopass keepenv :wheel cmd ifconfig
+    permit nopass keepenv :wheel cmd service
+
+```
