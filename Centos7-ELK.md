@@ -122,6 +122,37 @@ http://192.168.88.228:5601
 
 # install redis
 
+`yum install redis`
+
+`vim /etc/redis.conf`
+
+change
+
+```
+bind 127.0.0.1
+```
+to 
+
+```
+bind 127.0.0.1 192.168.88.118
+```
+
+change 
+
+```
+# requirepass foobared
+```
+to
+
+```
+requirepass your-password
+```
+
+```
+systemctl enable redis
+systemctl start redis
+redis-cli -a your-password
+```
 
 # install logstash
 
