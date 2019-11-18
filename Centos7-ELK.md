@@ -77,5 +77,55 @@ gateway.recover_after_nodes: 3
 `tailf /var/log/elasticsearch/lcmf-dev-es.log`
 
 
+## add another two elasticsearch node
+
+
+# install kibana
+
+## via yum 
+`cat /etc/yum.repos.d/kibana.repo`
+
+```
+[kibana-7.x]
+name=Kibana repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+```
+
+`yum install kibana`
+
+
+## via rpm
+`yum localinstall kibana-7.4.2-x86_64.rpm`
+
+## configure kibana
+`cat /etc/kibana/kibana.yml`
+
+```
+erver.port: 5601
+server.host: "0.0.0.0"
+server.name: "lcmf-dev-kibana"
+elasticsearch.hosts: ["http://192.168.88.228:9200"]
+```
+
+```
+systemctl start kibana
+tailf /var/log/messages
+```
+
+## access kibana via browser
+http://192.168.88.228:5601
+
+# install redis
+
+
+# install logstash
+
+
+# install filebeat
 
 
