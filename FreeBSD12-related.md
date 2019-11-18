@@ -153,3 +153,11 @@ dbus_enable="YES"
 hald_enable="YES"
 ```
 `reboot`
+
+# install sudo
+`pkg install sudo`
+`visudo`
+add
+`pp ALL=(ALL) ALL`
+below
+`root ALL=(ALL) ALL`
