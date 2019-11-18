@@ -244,6 +244,7 @@ type=rpm-md
 ## via rpm
 
 `yum localinstall logstash-7.4.2.rpm`
+sudo /usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd`
 
 ## configure logstash
 
