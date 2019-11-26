@@ -98,6 +98,14 @@ then
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
               佛祖保佑                                永不死机
 ```
+# lock import system files
+`chattr +i /etc/passwd /etc/shadow /etc/group /etc/gshadow`
+`lsattr /etc/passwd /etc/shadow /etc/group /etc/gshadow`
+`chattr -i /etc/passwd /etc/shadow /etc/group /etc/gshadow`
+
+# disable user which not used
+edit /etc/passwd
+
 
 # clean journal log
 `journalctl --vacuum-time=2d`
