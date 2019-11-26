@@ -205,3 +205,23 @@ or
 # mount nfs on boot
 edit /etc/rc.local
 /etc/fstab does not work in centos7.4,don't konow why
+
+# install and configure smtp
+
+`yum install -y mailx`
+`vim /etc/mail.rc`
+add follows
+```
+set from=op@licaimofang.com
+set smtp=smtps://smtp.ym.163.com:994
+set smtp-auth-user=xx@xxxx.com
+set smtp-auth-password=xxxxxx
+set smtp-auth=login
+set ssl-verify=ignore
+set nss-config-dir=/etc/pki/nssdb/
+
+```
+test
+`echo "This is a mail for test" | mail -v -s "Test Email Suject" xx@xxxx.com`
+
+
