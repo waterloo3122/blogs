@@ -131,9 +131,68 @@ password_pbkdf2 root grub.pbkdf2.sha512.10000.A97FD1982DA349F1FBFA9363119CEFAE18
 Check if effect
 `cat /boot/grub2/grub.cfg`
 
+# disable ping
+```
+echo "net.ipv4.icmp_echo_ingore_all=1" >> /etc/sysctl.conf
+sysctl -p
+```
+
+# change yum source to aliyun
+```
+yum install -y epel-release
+cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak  
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo 
+
+mv  /etc/yum.repos.d/epel.repo  /etc/yum.repos.d/epel.repo.bak
+mv  /etc/yum.repos.d/epel-testing.repo  /etc/yum.repos.d/epel-testing.repo.bak
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+
+yum clean all
+yum makecache
+```
+
+# wget usage
+```
+wget -O path_to_your_downloaded url
+-T 指定超时时间
+--tries 指定重试的次数
+-q 静默下载
+```
+
+# tree usage
+```
+tree -L 1 / #指定显示的层数
+```
+
+# ssh connect slow
+`vim /etc/ssh/sshd_config`
+add 
+`useDNS no`
+`systemctl restart ssh`
 
 
+# basic rules
+不用root管理
+更改远程连接端口，禁止root连接，可以只监听内网端口
+定时通过ntp更新服务器时间
+关闭selinux和iptables
+调整文件描述符的数量
+定时清理邮件目录垃圾文件，防止innode被占满
+精简并保留必要的开机服务
+内核优化
+更改字符集
+锁定关键文件
+清理多余的系统帐号
+grub添加密码
+禁止被ping
+配置更新源
 
+ 
+# print file line number
+```
+cat -n
+nl
+```
 
 # clean journal log
 `journalctl --vacuum-time=2d`
