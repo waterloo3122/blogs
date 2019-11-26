@@ -106,6 +106,34 @@ then
 # disable user which not used
 edit /etc/passwd
 
+# add grub password
+on centos7,generate password
+`grub2-mkpasswd-pbkdf2`
+generated encrypted hash like
+```
+PBKDF2 hash of your password is grub.pbkdf2.sha512.10000.A97FD1982DA349F1FBFA9363119CEFAE18C0CCA4FC462C52F7F7C83C8731CC06C1DD928B53306B37AD455BD01AEE1FDAC22A5217E6528F7BA6693C0C79F47029.53EEDC14116DACA2F67FFB17578BD5984B78233332BD50B37521F78C7CAA07FEFB1FE8E4788169DAD8A5B1A681AFC9FD48BB585FD80630135612FE78731F1A29
+
+```
+`cp /etc/grub.d/40_custom /etc/grub.d/40_custom.backup`
+`vi /etc/grub.d/40_custom   # Edit the GRUB Custom Menu`
+```
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+password_pbkdf2 root grub.pbkdf2.sha512.10000.A97FD1982DA349F1FBFA9363119CEFAE18C0CCA4FC462C52F7F7C83C8731CC06C1DD928B53306B37AD455BD01AEE1FDAC22A5217E6528F7BA6693C0C79F47029.53EEDC14116DACA2F67FFB17578BD5984B78233332BD50B37521F78C7CAA07FEFB1FE8E4788169DAD8A5B1A681AFC9FD48BB585FD80630135612FE78731F1A29
+```
+`cp /boot/grub2/grub.cfg /boot/grub2/grub.cfg.backup`
+
+`grub2-mkconfig -o /boot/grub2/grub.cfg`
+
+Check if effect
+`cat /boot/grub2/grub.cfg`
+
+
+
+
 
 # clean journal log
 `journalctl --vacuum-time=2d`
