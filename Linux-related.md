@@ -72,6 +72,9 @@ net.ipv4.tcp_max_orphans=16384
 then
 `sysctl -p`
 
+# set welcome message when ssh login
+echo 'Welcome' >> /etc/motd
+
 # clean journal log
 `journalctl --vacuum-time=2d`
 or
