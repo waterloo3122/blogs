@@ -64,9 +64,6 @@ update password db
 `sudo pure-pw mkdb`
 
 
-
-
-
 clean remove pure-ftpd
 ```
 sudo service pure-ftpd stop
