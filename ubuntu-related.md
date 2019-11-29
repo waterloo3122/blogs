@@ -74,3 +74,11 @@ sudo apt-get autoremove pure-ftpd
 sudo apt-get purge pure-ftpd
 sudo rm -r /etc/pure-ftpd
 ```
+
+# install lftp 
+`sudo apt install lftp -y`
+`cat ~/.lftprc`
+```
+set ssl:verify-certificate false
+
+```
