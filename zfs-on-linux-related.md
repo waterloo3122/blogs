@@ -1,4 +1,5 @@
 # config email alert
+# NOT WORK ON CENTOS7
 set your smtp config in /etc/mail.rc
 
 `vim /etc/zfs/zed.d/zed.rc`
