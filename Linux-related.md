@@ -278,3 +278,35 @@ yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php
 su - bae
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
+
+
+# clean boot and remove old kernels
+`yum list installed | grep kernel`
+here are the outputs
+```
+kernel.x86_64                         3.10.0-862.el7                 @anaconda
+kernel.x86_64                         3.10.0-957.10.1.el7            @updates
+kernel.x86_64                         3.10.0-1062.4.1.el7            @updates
+kernel-headers.x86_64                 3.10.0-1062.4.3.el7            @updates
+kernel-tools.x86_64                   3.10.0-1062.4.1.el7            @updates
+kernel-tools-libs.x86_64              3.10.0-1062.4.1.el7            @updates
+php-symfony-http-kernel.noarch        2.8.12-2.el7                   @epel
+```
+`uname -a`
+outputs:
+```
+Linux test-app-server-php73 3.10.0-1062.4.1.el7.x86_64 #1 SMP Fri Oct 18 17:15:30 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+```
+remove useless
+```
+yum remove kernel-3.10.0-862.el7.x86_64  kernel-3.10.0-957.el7.x86_64 
+```
+
+`vim /etc/yum.conf `
+change 
+`installonly_limit=6`
+to 
+`installonly_limit=2`
+then run
+`package-cleanup --oldkernels --assumeyes --count=2`
+
