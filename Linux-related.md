@@ -234,7 +234,17 @@ yum install yum-utils
 sed -i 's/http:\/\/cdn.remirepo.net/https:\/\/mirrors.aliyun.com\/remi/g'  /etc/yum.repos.d/remi*; 
 sed -i 's/http:\/\/rpms.remirepo.net/https:\/\/mirrors.aliyun.com\/remi/g'  /etc/yum.repos.d/remi*; 
 sed -i 's/#baseurl/baseurl/g' /etc/yum.repos.d/remi*; 
-	yum clean all; \
+
+cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak  
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo  
+
+mv  /etc/yum.repos.d/epel.repo  /etc/yum.repos.d/epel.repo.bak
+mv  /etc/yum.repos.d/epel-testing.repo  /etc/yum.repos.d/epel-testing.repo.bak
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+
+yum clean all
+yum makecache
+
 yum-config-manager --enable  remi-php73
 
 yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd php-fpm php-pear php-devel php-devel php-devel php-devel php-devel php-devel php-devel php-devel php-devel  composer vim git unzip tmux net-tools
