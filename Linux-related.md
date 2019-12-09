@@ -315,3 +315,14 @@ to
 then run
 `package-cleanup --oldkernels --assumeyes --count=2`
 
+# composer 中国源
+## tencent
+`composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/`
+## aliyun 
+`composer config -g repos.packagist composer https://mirrors.aliyun.com/composer/`
+## huawei
+`composer config -g repos.packagist composer https://mirrors.huaweicloud.com/repository/php`
+## cnpkg
+`composer config -g repos.packagist composer https://php.cnpkg.org`
+## sjtug
+`composer config -g repos.packagist https://packagist.mirrors.sjtug.sjtu.edu.cn`
