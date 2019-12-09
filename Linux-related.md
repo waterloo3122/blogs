@@ -279,6 +279,11 @@ su - bae
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
+# install php56 after install php7
+```
+yum install php56 php56-php-common php56-php-opcache php56-php-mcrypt php56-php-cli php56-php-gd php56-php-curl php56-php-mysqlnd php56-php-fpm php56-php-pear php56-php-devel
+```
+
 
 # clean boot and remove old kernels
 `yum list installed | grep kernel`
