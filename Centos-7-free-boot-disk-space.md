@@ -1,4 +1,4 @@
-# list kernel installed
+# list kernel installed free boot space
 `yum list installed | grep kernel`
 Below is output
 ```
