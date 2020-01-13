@@ -250,3 +250,34 @@ Send to Aria2 WE
 
 Aria2 Download Manager Integration
 
+# ubunt 18 smb install and configure
+
+`sudo apt isntall smaba smbclient`
+
+`vim  /etc/samba/smb.conf`
+
+add the following at the bottom:
+
+```[sambashare]
+[sambashare]
+    comment = Samba on Ubuntu
+    path = /data/sambashare
+    read only = no
+    browsable = yes
+
+​```
+```
+
+```
+
+```
+
+` sudo smbpasswd -a pp` 
+
+`mkdir /data/sambashare`
+
+`chown -R pp.pp /data/sambashare`
+
+`sudo systemctl restart smbd.service`
+
+`sudo smbclient //192.168.88.106/sambashare -U pp`
