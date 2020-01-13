@@ -258,17 +258,13 @@ Aria2 Download Manager Integration
 
 add the following at the bottom:
 
-```[sambashare]
+```
+[sambashare]
 [sambashare]
     comment = Samba on Ubuntu
     path = /data/sambashare
     read only = no
     browsable = yes
-
-​```
-```
-
-```
 
 ```
 
