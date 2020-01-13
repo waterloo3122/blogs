@@ -126,3 +126,74 @@ deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 ```
+
+# ubuntu 18.04 enable screen sharing
+
+- `cd /etc/NetworkManager`
+
+- save `NetworkManager.conf` to `NetworkManager.orig` (as a backup)
+
+- `sudo vi NetworkManager.conf`
+
+  Change `managed=false` to `managed=true`
+
+  New file looks like this:
+
+  ```
+  [main]
+      plugins=ifupdown,keyfile
+  [ifupdown]
+      managed=true
+  [device]
+      wifi.scan-rand-mac-address=no
+  ```
+
+- `sudo service network-manager restart`
+
+- `cd /etc/netplan`
+
+- `sudo vi 01-netcfg.yaml`
+
+  Add this line just below `network:`
+
+  `renderer: NetworkManager`
+
+  New file looks similar to this (ensure the `renderer` line is indented as shown):
+
+  ```
+  network:
+      renderer: NetworkManager
+      ethernets:
+          enp3s0:
+              addresses: []
+              dhcp4: true
+  version: 2
+  ```
+
+- save
+
+- `sudo netplan apply`
+
+- I had then to restart the computer for this to be effective.
+
+- After restart the network will now show "wired-connected"
+
+  If errors like: 
+
+  **Server did not offer supported security type!**
+
+  Then:
+
+  ```
+  sudo apt install dconf-editor
+  ```
+
+Launch dconf-edtor
+
+Browse **org | gnome | desktop | remote-access**
+
+Toggle off **Require Encryption**
+
+Close Editor
+
+use mobo to vnc to your ubuntu
