@@ -277,3 +277,5 @@ add the following at the bottom:
 `sudo systemctl restart smbd.service`
 
 `sudo smbclient //192.168.88.106/sambashare -U pp`
+
+
