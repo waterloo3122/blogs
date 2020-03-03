@@ -252,7 +252,7 @@ Aria2 Download Manager Integration
 
 # ubunt 18 smb install and configure
 
-`sudo apt isntall smaba smbclient`
+`sudo apt install samba smbclient`
 
 `vim  /etc/samba/smb.conf`
 
@@ -260,14 +260,14 @@ add the following at the bottom:
 
 ```
 [sambashare]
-[sambashare]
     comment = Samba on Ubuntu
     path = /data/sambashare
-    read only = no
+    read only = yes
     browsable = yes
 
 ```
 
+# 下面这个用户pp必须是系统原有的用户，设置的密码为smb的密码，不影响系统原有的登陆密码
 ` sudo smbpasswd -a pp` 
 
 `mkdir /data/sambashare`
