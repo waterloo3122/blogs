@@ -12,7 +12,32 @@ OR
 `echo "export HISTSIZE=1000" >> /etc/profile`
 
 # modify file descriptor 文件描述符
-`echo "* - nofile 65535" >> /etc/security/limits.conf`
+`vim /etc/security/limits.conf`
+add following
+```
+root soft nofile 65535
+root hard nofile 65535
+
+* soft nofile 65535
+* hard nofile 65535
+
+* soft nproc  65535
+* hard nproc  65535
+
+
+```
+then reboot 
+
+# change nproc for centos7
+vim /etc/security/limits.d/20-nproc.conf
+add
+```
+*          soft    nproc     4096
+root       soft    nproc     unlimited
+
+```
+
+
 
 # kernel 
 `vim /etc/sysctl.conf`
