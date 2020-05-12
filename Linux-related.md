@@ -332,12 +332,18 @@ remove useless
 yum remove kernel-3.10.0-862.el7.x86_64  kernel-3.10.0-957.el7.x86_64 
 ```
 
-`vim /etc/yum.conf `
+`vim /etc/yum.conf`
+
 change 
+
 `installonly_limit=6`
+
 to 
+
 `installonly_limit=2`
+
 then run
+
 `package-cleanup --oldkernels --assumeyes --count=2`
 
 # composer 中国源
