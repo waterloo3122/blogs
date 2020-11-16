@@ -12,3 +12,5 @@ ZED_NOTIFY_VERBOSE=1
 ZED_USE_ENCLOSURE_LEDS=1
 ```
 `systemctl restart zed`
+
+if not work, file an issue
