@@ -1,5 +1,6 @@
 # list kernel installed free boot space
 `yum list installed | grep kernel`
+`rpm -qa |grep -i kenel`
 Below is output
 ```
 kernel.x86_64                        3.10.0-957.10.1.el7               @updates                                                                                                                                                              
