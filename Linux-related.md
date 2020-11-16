@@ -357,3 +357,6 @@ then run
 `composer config -g repos.packagist composer https://php.cnpkg.org`
 ## sjtug
 `composer config -g repos.packagist https://packagist.mirrors.sjtug.sjtu.edu.cn`
+
+## others
+
